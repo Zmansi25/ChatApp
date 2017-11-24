@@ -1,0 +1,158 @@
+doctype html
+html(lang='en')
+  head
+    title Homepage
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(href='https://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah', rel='stylesheet')
+    // jQuery
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    script(src='https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js')
+    // Bootstrap Core JavaScript
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    // Theme JavaScript
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js')
+    script(src='https://use.fontawesome.com/c5af0a0d8e.js')
+    style.
+      @-webkit-keyframes swinging{
+      0%{-webkit-transform: rotate(10deg);}
+      50%{-webkit-transform: rotate(-5deg)}
+      100%{-webkit-transform: rotate(10deg);}
+      }
+      @keyframes swinging{
+      0%{transform: rotate(10deg);}
+      50%{transform: rotate(-5deg)}
+      100%{transform: rotate(10deg);}
+      }
+      .swing{
+      -webkit-transform-origin: 50% 0;
+      transform-origin: 50% 0;
+      -webkit-animation: swinging 3.5s ease-in-out forwards infinite;
+      animation: swinging 3.5s ease-in-out forwards infinite;
+      }
+      body{
+      /* Create the parallax scrolling effect */
+      background-repeat: no-repeat;
+      font-family: "Open Sans", Helvetica;
+      background-size:100%;
+      background-image:url('/imgs/nova1.jpg');
+      overflow-x:hidden;
+      }
+      .button {
+      background-color: #020B14;
+      border: 2px solid white;
+      border-radius: 27px;
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+      margin-top: 20px;
+      padding: 15px 30px;
+      text-transform: uppercase;
+      transition: all 200ms;
+      }
+      a:hover, a:focus {
+      background-color: white;
+      color: #333333;
+      outline: 0;
+      }
+      .main{
+      margin-left:25%;
+      margin-top:5%;
+      width: 100px;
+      float: left;
+      align-items: center;
+      }
+      .main1{
+      margin-left:10%;
+      margin-top:5%;
+      width: 200px;
+      float: left;
+      align-items: center;
+      }
+      .preload * {
+      -webkit-transition: none !important;
+      -moz-transition: none !important;
+      -ms-transition: none !important;
+      -o-transition: none !important;
+      }
+      #test {
+      visibility: hidden;
+      }
+      .slideDown{
+      animation-name: slideDown;
+      -webkit-animation-name: slideDown;
+      animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      animation-timing-function: ease;
+      -webkit-animation-timing-function: ease;
+      visibility: visible !important;
+      }
+      @keyframes slideDown {
+      0% {
+      transform: translateY(-100%);
+      }
+      50%{
+      transform: translateY(8%);
+      }
+      65%{
+      transform: translateY(-4%);
+      }
+      80%{
+      transform: translateY(4%);
+      }
+      95%{
+      transform: translateY(-2%);
+      }
+      100% {
+      transform: translateY(0%);
+      }
+      }
+      @-webkit-keyframes slideDown {
+      0% {
+      -webkit-transform: translateY(-100%);
+      }
+      50%{
+      -webkit-transform: translateY(8%);
+      }
+      65%{
+      -webkit-transform: translateY(-4%);
+      }
+      80%{
+      -webkit-transform: translateY(4%);
+      }
+      95%{
+      -webkit-transform: translateY(-2%);
+      }
+      100% {
+      -webkit-transform: translateY(0%);
+      }
+      }
+    script(type='text/javascript').
+      $(window).load(function() {
+      $("body").removeClass("preload");
+      });
+      document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+      document.getElementById('test').className = 'slideDown';
+      }, 800);
+      }, false);
+  body.preload
+    div(style='float:left;padding: 10px;margin: 10px; position:center')
+      img.swing(src='/imgs/lit.png', style='width:25%;height:25%;padding: 5px;margin:3% 3% 3% 3%', align='left')
+      #test(style='display: inline-block;margin:2% 5% 2% 5%;color:white')
+        h1(style="text-align:center;font-family: 'Pacifico', cursive;font-size:5.5em")
+          i.fa.fa-comments-o.fa-2x(aria-hidden='true')
+          br
+          | Chitter-Chatter
+        p(style="font-family: 'Gloria Hallelujah', cursive;font-size:1.5em;        ") Chit-Chat, Gossip, Friends ? Yes Please.Welcome to Chitter-Chatter!!!
+        .main
+          a.button.btn.btn-default.btn-lg(href='/users/signup')  Sign Up!
+        .main1
+          a.button.btn.btn-default.btn-lg(href='/users/login')  Login 
+          br

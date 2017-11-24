@@ -1,0 +1,203 @@
+doctype html
+html(lang='en')
+  head
+    title chat
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(href='https://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Berkshire+Swash|Courgette|Noto+Serif|Permanent+Marker|Philosopher|Questrial|Shadows+Into+Light', rel='stylesheet')
+    style.
+      body{
+      background-color: #ffffff;
+      color: #000000;
+      font-size: 16px;
+      text-align: center;
+      align-items: center;
+      
+      font-family: 'Philosopher', sans-serif;
+      overflow-x:hidden;
+      /*background-attachment: fixed;*/
+      /*background-position: center;*/
+      }
+      h4,h2{
+      font-family: 'Berkshire Swash', cursive;
+      }
+      * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      }
+      html {
+      background-size:100%;
+     
+      }
+      .badge{
+      color:white;
+      background:none;
+      }
+      #ubtn{
+      margin-bottom: 10px;
+      border: none;
+      background:none;
+      color:white;
+      }
+      .footer {
+      background-color: #292c2f;
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+      box-sizing: border-box;
+      width: 100%;
+      text-align: center;
+      font: normal 18px sans-serif;
+      padding: 45px;
+      margin-top: 50px;
+      border-top: 5px solid red;
+      }
+      input{
+      position: relative;
+      font-size: 16px;
+      height: auto;
+      padding: 10px;
+      width: 75%;
+      background-color: #ffffff;
+      box-shadow: none;
+      border-radius: 10px;
+      }
+      .boxF{
+      display: inline-block;
+      margin: 5px;
+      border: none;
+      font-weight: bold;
+      }
+      .boxF:hover{
+      border: 2px dotted green;
+      }
+
+      p{
+      font-weight: bold;
+      }
+      /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+      .row.content {height: 1500px}
+      /* Set gray background color and 100% height */
+      .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+      }
+      /* Set black background color, white text and some padding */
+      footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+      }
+      /* On small screens, set height to 'auto' for sidenav and grid */
+      @media screen and (max-width: 767px) {
+      .sidenav {
+      height: auto;
+      padding: 15px;
+      }
+      .row.content {height: auto;}
+      }
+      /*styling of chat panel body*/
+      #scrl1,
+      #scrl2{
+      overflow-y: auto;
+      height: 900px;
+      }
+      #loading,
+      #noChat,
+      #chatForm{
+      display: none;
+      }
+      .input-box-send{
+      position: relative;
+      font-size: 16px;
+      height: auto;
+      padding: 10px;
+      width: 85%;
+      border: 1px solid #000000;
+      background-color: #ffffff;
+      box-shadow: none;
+      }
+      #messages,
+      #list{
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 50px;
+      }
+      #messages li,
+      #list li{
+      text-align: left;
+      width: auto;
+      background: none;
+      padding: 5px 15px;
+      margin: 10px;
+      border-radius: 5px;
+      }
+  body
+    .container-fluid
+      input#user(type='hidden', value=' #{user.username}')
+      .row.content
+        .col-sm-3.sidenav(style='background-color:#2C3E50;color:white')
+          h2
+            img(src='https://png.icons8.com/cookie-monster/color/35/000000')
+            |  Online users
+          hr
+          input#myInput(type='text', onkeyup='myFunction()', placeholder='Search for names..', title='Type in a name', style='color:black')
+          #scrl1(style='background-color:#2C3E50;color:white')
+            br
+            h4(style='text-align:left;margin:10%;') Channels :
+            ul#list.nav.nav-pills.nav-stacked
+          div
+            p#typing.btn.btn-danger.btn-block.btn-lg
+          br
+          div
+            a#logout.btn.btn-danger.btn-block.btn-lg(href='/users/logout') Logout
+        .col-sm-9
+          h2#frndName
+            img(src='https://png.icons8.com/speech-bubble/dusk/35/000000')
+            small  MESSAGES
+          hr
+          #scrl2.card-body
+            p#loading Loading!
+            p#noChat Start a convo!
+            p#initMsg Choose a friend to talk to
+            ul#messages.white-text
+          div
+            form#chatForm(action='')
+              input#myMsg.input-box-send(autocomplete='off', placeholder='Write Message Here..')
+              button#sendBtn.btn.btn-success.btn-lg
+                b Send
+                span.glyphicon.glyphicon-send
+    footer.container-fluid
+      p.footer-name
+        | © 
+        b Mansi Zope
+    // jQuery
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    // Bootstrap Core JavaScript
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js')
+    // Theme JavaScript
+    script(src='https://use.fontawesome.com/c5af0a0d8e.js')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.min.js')
+    script(src='/js/socket.io.js')
+    script(src='/js/chatScript.js')
+    script(type='text/javascript').
+      function myFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("list");
+      li = ul.getElementsByTagName("li");
+      for (i = 0; i < li.length; i++) {
+      a = li[i];
+      if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+      } else {
+      li[i].style.display = "none";
+      }
+      }
+      }
